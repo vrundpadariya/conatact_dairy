@@ -12,7 +12,9 @@ class _homeState extends State<home> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushReplacementNamed(context, 'c');
+        },
       ),
       appBar: AppBar(
         centerTitle: true,

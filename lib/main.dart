@@ -10,7 +10,7 @@ void main() {
       theme: theme().Light,
       routes: {
         '/': (context) => home(),
-        'contact': (context) => Contact(),
+        'c': (context) => Contact(),
       },
     ),
   );
