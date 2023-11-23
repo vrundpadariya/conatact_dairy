@@ -1,14 +1,9 @@
 import 'package:contactapp/model/global.dart';
 import 'package:flutter/material.dart';
 
-class Contact extends StatefulWidget {
-  const Contact({super.key});
+class contact extends StatelessWidget {
+  const contact({super.key});
 
-  @override
-  State<Contact> createState() => _ContactState();
-}
-
-class _ContactState extends State<Contact> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,18 +15,18 @@ class _ContactState extends State<Contact> {
       body: Stepper(
         currentStep: global.currentstep,
         onStepContinue: () {
-          setState(() {
-            if (global.currentstep != 3) {
-              global.currentstep++;
-            }
-          });
+          // setState(() {
+          //   if (global.currentstep != 3) {
+          //     global.currentstep++;
+          //   }
+          // });
         },
         onStepCancel: () {
-          setState(() {
-            if (global.currentstep != 0) {
-              global.currentstep--;
-            }
-          });
+          // setState(() {
+          //   if (global.currentstep != 0) {
+          //     global.currentstep--;
+          //   }
+          // });
         },
         steps: [
           Step(
@@ -81,9 +76,9 @@ class _ContactState extends State<Contact> {
               ],
             ),
           ),
-          Step(title: Text("Email"), content: content)
         ],
       ),
     );
+    ();
   }
 }
