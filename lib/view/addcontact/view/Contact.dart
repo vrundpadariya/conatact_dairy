@@ -76,6 +76,21 @@ class contact extends StatelessWidget {
               ],
             ),
           ),
+          Step(
+            title: Text("Email"),
+            content: Column(
+              children: [
+                TextFormField(
+                  decoration: InputDecoration(
+                    hintText: "Enter Email",
+                    hintStyle: TextStyle(),
+                  ),
+                  maxLength: 10,
+                  keyboardType: TextInputType.emailAddress,
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
