@@ -1,11 +1,15 @@
-import 'package:contactapp/model/global.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../model/continue/continuemodel.dart';
+import '../provider/continueprovider/continueprovider.dart';
 
 class contact extends StatelessWidget {
   const contact({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Continue c = Continue(Currentstep: 0);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -13,25 +17,16 @@ class contact extends StatelessWidget {
         ),
       ),
       body: Stepper(
-        currentStep: global.currentstep,
+        currentStep: Provider.of<continueprovider>(context).c.Currentstep,
         onStepContinue: () {
-          // setState(() {
-          //   if (global.currentstep != 3) {
-          //     global.currentstep++;
-          //   }
-          // });
+          Provider.of<continueprovider>(context, listen: false).Continuestep();
         },
         onStepCancel: () {
-          // setState(() {
-          //   if (global.currentstep != 0) {
-          //     global.currentstep--;
-          //   }
-          // });
+          Provider.of<continueprovider>(context, listen: false).cancelstep();
         },
         steps: [
           Step(
-            isActive: true,
-            title: Text(
+            title: const Text(
               "ADD Photo",
             ),
             content: CircleAvatar(
@@ -40,11 +35,11 @@ class contact extends StatelessWidget {
             ),
           ),
           Step(
-            title: Text("NAME"),
+            title: const Text("NAME"),
             content: Column(
               children: [
                 TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: "Enter First Name ",
                     hintStyle: TextStyle(),
                   ),
@@ -85,7 +80,6 @@ class contact extends StatelessWidget {
                     hintText: "Enter Email",
                     hintStyle: TextStyle(),
                   ),
-                  maxLength: 10,
                   keyboardType: TextInputType.emailAddress,
                 ),
               ],
