@@ -26,6 +26,7 @@ class contact extends StatelessWidget {
         },
         steps: [
           Step(
+            isActive: (c.Currentstep == 0) ? true : false,
             title: const Text(
               "ADD Photo",
             ),
@@ -35,6 +36,7 @@ class contact extends StatelessWidget {
             ),
           ),
           Step(
+            isActive: (c.Currentstep == 1) ? true : false,
             title: const Text("NAME"),
             content: Column(
               children: [
@@ -57,6 +59,7 @@ class contact extends StatelessWidget {
             ),
           ),
           Step(
+            isActive: (c.Currentstep == 3) ? true : false,
             title: Text("Phone Number"),
             content: Column(
               children: [
@@ -72,6 +75,7 @@ class contact extends StatelessWidget {
             ),
           ),
           Step(
+            isActive: (c.Currentstep == 4) ? true : false,
             title: Text("Email"),
             content: Column(
               children: [
