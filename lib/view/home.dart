@@ -18,7 +18,7 @@ class _homeState extends State<home> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushReplacementNamed(context, 'c');
+          Navigator.pushReplacementNamed(context, 'd');
         },
         child: const Icon(
           Icons.add,

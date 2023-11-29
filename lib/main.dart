@@ -3,6 +3,7 @@ import 'package:contactapp/view/addcontact/model/theme/theme.dart';
 import 'package:contactapp/view/addcontact/provider/Themeprovider/themeprovider.dart';
 import 'package:contactapp/view/addcontact/provider/continueprovider/continueprovider.dart';
 import 'package:contactapp/view/addcontact/view/Contact.dart';
+import 'package:contactapp/view/detail/view/detail.dart';
 import 'package:contactapp/view/home.dart';
 import 'package:contactapp/view/introduction%20screen/introduction.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,7 @@ void main() async {
         '/': (context) => const introduction(),
         'home': (context) => const home(),
         'c': (context) => const contact(),
+        'd': (context) => const detail(),
       },
     ),
   ));
