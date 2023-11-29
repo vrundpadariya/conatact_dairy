@@ -12,29 +12,25 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences preferences = await SharedPreferences.getInstance();
-  bool saved_theam = preferences.getBool("save_theam") ?? false;
-
+  // bool saved_theam = preferences.getBool("save_theam") ?? false;
+  bool isDark = preferences.getBool('isDark') ?? false;
   bool isvisited = preferences.getBool("Isvisited") ?? false;
   runApp(MultiProvider(
     providers: [
       ListenableProvider<continueprovider>(
         create: (ctx) => continueprovider(),
       ),
-      ListenableProvider<TheamProvider>(
-        create: (ctx) => TheamProvider(
-          myTheamModel: TheamChange(isDark: saved_theam),
-        ),
-      ),
+      ListenableProvider<ThemeProvider>(
+          create: (ctx) => ThemeProvider(theme: ThemeModel(isDark: isDark))),
     ],
     builder: (context, widget) => MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: (isvisited) ? 'home' : '/',
-      theme: mytheme().Light,
-      darkTheme: mytheme().Dark,
-      themeMode:
-          (Provider.of<TheamProvider>(context).myTheamModel.isDark == false)
-              ? ThemeMode.light
-              : ThemeMode.dark,
+      theme: mytheme.Light,
+      darkTheme: mytheme.Dark,
+      themeMode: (Provider.of<ThemeProvider>(context).theme.isDark == true)
+          ? ThemeMode.dark
+          : ThemeMode.light,
       routes: {
         '/': (context) => const introduction(),
         'home': (context) => const home(),

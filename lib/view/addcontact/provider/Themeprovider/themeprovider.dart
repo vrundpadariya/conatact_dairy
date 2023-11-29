@@ -1,17 +1,16 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../model/theme/theme.dart';
 
-class TheamProvider extends ChangeNotifier {
-  TheamChange myTheamModel;
+class ThemeProvider extends ChangeNotifier {
+  ThemeModel theme;
+  ThemeProvider({required this.theme});
+  void changeTheme() async {
+    theme.isDark = !theme.isDark;
+    SharedPreferences preferences = await SharedPreferences.getInstance();
 
-  TheamProvider({required this.myTheamModel});
-
-  void ChangeTheam() async {
-    myTheamModel.isDark = !myTheamModel.isDark;
-    SharedPreferences save_my_theam = await SharedPreferences.getInstance();
-    save_my_theam.setBool("save_theam", myTheamModel.isDark);
+    preferences.setBool("isDark", theme.isDark);
     notifyListeners();
   }
 }

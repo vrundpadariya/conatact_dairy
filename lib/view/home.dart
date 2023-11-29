@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:provider/provider.dart';
 
 import 'addcontact/provider/Themeprovider/themeprovider.dart';
@@ -11,6 +12,7 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
+  LocalAuthentication authentication = LocalAuthentication();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +20,9 @@ class _homeState extends State<home> {
         onPressed: () {
           Navigator.pushReplacementNamed(context, 'c');
         },
+        child: const Icon(
+          Icons.add,
+        ),
       ),
       appBar: AppBar(
         centerTitle: true,
@@ -25,26 +30,23 @@ class _homeState extends State<home> {
           "Contact",
         ),
         actions: [
-          IconButton(
-            onPressed: () {
-              Provider.of<TheamProvider>(context, listen: false).ChangeTheam();
-            },
-            icon: Icon((Provider.of<TheamProvider>(context, listen: false)
-                        .myTheamModel
-                        .isDark ==
-                    false)
-                ? Icons.sunny
-                : Icons.wb_sunny_outlined),
-          )
-          // PopupMenuButton(
-          //     itemBuilder: (ctx) => [
-          //           PopupMenuItem(
-          //             child: Text("Dark Theme"),
-          //           ),
-          //           PopupMenuItem(
-          //             child: Text("Autication"),
-          //           ),
-          //         ])
+          PopupMenuButton(
+              onSelected: (val) async {
+                if (val == 'theme') {
+                  Provider.of<ThemeProvider>(context, listen: false)
+                      .changeTheme();
+                }
+              },
+              itemBuilder: (ctx) => [
+                    const PopupMenuItem(
+                      child: Text("Theme"),
+                      value: "theme",
+                    ),
+                    const PopupMenuItem(
+                      child: Text("Hidden contact"),
+                      value: "hidden",
+                    ),
+                  ])
         ],
       ),
       body: Center(
@@ -54,7 +56,7 @@ class _homeState extends State<home> {
             Container(
               height: 150,
               width: 150,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: AssetImage(
@@ -62,7 +64,7 @@ class _homeState extends State<home> {
                 ),
               ),
             ),
-            Text(
+            const Text(
               "No Contact found",
               style: TextStyle(fontSize: 15),
             ),
