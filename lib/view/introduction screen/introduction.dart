@@ -13,7 +13,7 @@ class introduction extends StatelessWidget {
           pages: [
             PageViewModel(
               title: "Contact app",
-              body: "Hello",
+              body: "Hello you can add your friends and family ",
               image: Container(
                 height: 300,
                 width: double.infinity,
@@ -26,7 +26,7 @@ class introduction extends StatelessWidget {
             ),
             PageViewModel(
               title: "Contact app",
-              body: "Hello",
+              body: "You can chat and call from this app ",
               image: Container(
                 height: 300,
                 width: double.infinity,
@@ -39,7 +39,8 @@ class introduction extends StatelessWidget {
             ),
             PageViewModel(
               title: "Contact app",
-              body: "Hello",
+              body:
+                  "you can do email to business friends and do business through this app",
               image: Container(
                 height: 300,
                 width: double.infinity,
@@ -52,7 +53,8 @@ class introduction extends StatelessWidget {
             ),
             PageViewModel(
               title: "Contact app",
-              body: "Hello",
+              body:
+                  "From this app you cand send the contact to other frends and relative",
               image: Container(
                 height: 300,
                 width: double.infinity,

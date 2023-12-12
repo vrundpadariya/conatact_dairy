@@ -1,6 +1,7 @@
 import 'package:contactapp/model/Theme.dart';
 import 'package:contactapp/view/addcontact/model/theme/theme.dart';
 import 'package:contactapp/view/addcontact/provider/Themeprovider/themeprovider.dart';
+import 'package:contactapp/view/addcontact/provider/contactprovider/contact%20provider.dart';
 import 'package:contactapp/view/addcontact/provider/continueprovider/continueprovider.dart';
 import 'package:contactapp/view/addcontact/view/Contact.dart';
 import 'package:contactapp/view/detail/view/detail.dart';
@@ -21,6 +22,9 @@ void main() async {
       ListenableProvider<continueprovider>(
         create: (ctx) => continueprovider(),
       ),
+      ListenableProvider<ContactProvider>(
+        create: (ctx) => ContactProvider(),
+      ),
       ListenableProvider<ThemeProvider>(
           create: (ctx) => ThemeProvider(theme: ThemeModel(isDark: isDark))),
     ],
@@ -34,9 +38,9 @@ void main() async {
           : ThemeMode.light,
       routes: {
         '/': (context) => const introduction(),
-        'home': (context) => const home(),
-        'c': (context) => const contact(),
-        'd': (context) => const detail(),
+        'home': (context) => home(),
+        'd': (context) => contact(),
+        'c': (context) => Contact_Detail(),
       },
     ),
   ));
